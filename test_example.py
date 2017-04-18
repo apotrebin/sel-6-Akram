@@ -12,13 +12,13 @@ def driver(request):
     return wd
 
 
-def test_example(driver):
+def test_login(driver):
     driver.get("http://localhost:8080/litecart/admin/login.php")
     wait = WebDriverWait(driver, 10)  # seconds
     driver.find_element_by_name("username").send_keys("admin")
     driver.find_element_by_name("password").send_keys("admin")
     driver.find_element_by_xpath(".//*[@id='box-login']/form/div[2]/button").click()
-    wait.until(EC.title_is("My Store"))
     driver.find_element_by_xpath(".//*[@id='shortcuts']/a[5]/i").click()
+    wait.until(EC.title_is("My Store"))
 
 
